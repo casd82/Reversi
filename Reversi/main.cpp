@@ -1,5 +1,27 @@
 #include <SFML/Graphics.hpp>
 
 #include "ResourcePath.hpp"
+#include "CoreGame.hpp"
 
-
+int main()
+{
+    sf::RenderWindow window(sf::VideoMode(512, 512), "Reversi", sf::Style::Close | sf::Style::Titlebar);
+    CoreGame coreGame(window);
+    
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+            
+            coreGame.handleInput(event);
+        }
+        
+        coreGame.update();
+        coreGame.render();
+    }
+    
+    return 0;
+}
