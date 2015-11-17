@@ -21,6 +21,9 @@ public:
     virtual void update(){};
     virtual void render(){};
     ~GameState(){};
+protected:
+    virtual sf::RenderWindow* getWindow() {return window;};
+    virtual CoreGame* getCoreGame() {return coreGame;};
 private:
     sf::RenderWindow* window;
     CoreGame* coreGame;

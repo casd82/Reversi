@@ -7,18 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D942A6E81BFB333200CCBBA9 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D942A6E61BFB333200CCBBA9 /* Button.cpp */; };
 		D94A7C551BF9C96B00F4615C /* GameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D94A7C531BF9C96B00F4615C /* GameState.cpp */; };
 		D94A7C5A1BF9CAE200F4615C /* CoreGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D94A7C581BF9CAE200F4615C /* CoreGame.cpp */; };
+		D9A26A2D1BFA1066006ADA2F /* MenuState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9A26A2B1BFA1066006ADA2F /* MenuState.cpp */; };
 		D9B77C8C1BF9C6EB00F6F3B6 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9B77C8B1BF9C6EB00F6F3B6 /* ResourcePath.mm */; };
 		D9B77C8F1BF9C6EB00F6F3B6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B77C8E1BF9C6EB00F6F3B6 /* main.cpp */; };
 		D9B77C961BF9C6EB00F6F3B6 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B77C951BF9C6EB00F6F3B6 /* sansation.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D942A6E61BFB333200CCBBA9 /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
+		D942A6E71BFB333200CCBBA9 /* Button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Button.hpp; sourceTree = "<group>"; };
 		D94A7C531BF9C96B00F4615C /* GameState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameState.cpp; path = Reversi/GameState.cpp; sourceTree = "<group>"; };
 		D94A7C541BF9C96B00F4615C /* GameState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GameState.hpp; path = Reversi/GameState.hpp; sourceTree = "<group>"; };
 		D94A7C581BF9CAE200F4615C /* CoreGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CoreGame.cpp; sourceTree = "<group>"; };
 		D94A7C591BF9CAE200F4615C /* CoreGame.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CoreGame.hpp; sourceTree = "<group>"; };
+		D9A26A2B1BFA1066006ADA2F /* MenuState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuState.cpp; sourceTree = "<group>"; };
+		D9A26A2C1BFA1066006ADA2F /* MenuState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MenuState.hpp; sourceTree = "<group>"; };
 		D9B77C861BF9C6EB00F6F3B6 /* Reversi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reversi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B77C8A1BF9C6EB00F6F3B6 /* Reversi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Reversi-Info.plist"; sourceTree = "<group>"; };
 		D9B77C8B1BF9C6EB00F6F3B6 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
@@ -38,11 +44,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D942A6E51BFB331900CCBBA9 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				D942A6E61BFB333200CCBBA9 /* Button.cpp */,
+				D942A6E71BFB333200CCBBA9 /* Button.hpp */,
+			);
+			name = Button;
+			sourceTree = "<group>";
+		};
 		D94A7C561BF9C97300F4615C /* GameStates */ = {
 			isa = PBXGroup;
 			children = (
 				D94A7C531BF9C96B00F4615C /* GameState.cpp */,
 				D94A7C541BF9C96B00F4615C /* GameState.hpp */,
+				D9A26A2B1BFA1066006ADA2F /* MenuState.cpp */,
+				D9A26A2C1BFA1066006ADA2F /* MenuState.hpp */,
 			);
 			name = GameStates;
 			path = ..;
@@ -81,6 +98,7 @@
 				D9B77C8E1BF9C6EB00F6F3B6 /* main.cpp */,
 				D94A7C581BF9CAE200F4615C /* CoreGame.cpp */,
 				D94A7C591BF9CAE200F4615C /* CoreGame.hpp */,
+				D942A6E51BFB331900CCBBA9 /* Button */,
 				D9B77C901BF9C6EB00F6F3B6 /* Resources */,
 				D9B77C891BF9C6EB00F6F3B6 /* Supporting Files */,
 			);
@@ -190,7 +208,9 @@
 				D94A7C5A1BF9CAE200F4615C /* CoreGame.cpp in Sources */,
 				D9B77C8F1BF9C6EB00F6F3B6 /* main.cpp in Sources */,
 				D94A7C551BF9C96B00F4615C /* GameState.cpp in Sources */,
+				D9A26A2D1BFA1066006ADA2F /* MenuState.cpp in Sources */,
 				D9B77C8C1BF9C6EB00F6F3B6 /* ResourcePath.mm in Sources */,
+				D942A6E81BFB333200CCBBA9 /* Button.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
