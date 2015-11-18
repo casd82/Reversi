@@ -15,7 +15,7 @@ class CoreGame
 {
 public:
     //game loop
-    CoreGame(sf::RenderWindow& window);
+    CoreGame(sf::RenderWindow* window);
     void handleInput(sf::Event& event);
     void update();
     void render();

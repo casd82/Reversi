@@ -6,7 +6,7 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(512, 512), "Reversi", sf::Style::Close | sf::Style::Titlebar);
-    CoreGame coreGame(window);
+    CoreGame coreGame(&window);
     
     while (window.isOpen())
     {
@@ -20,7 +20,11 @@ int main()
         }
         
         coreGame.update();
+        
+        //render
+        window.clear(sf::Color::White);
         coreGame.render();
+        window.display();
     }
     
     return 0;

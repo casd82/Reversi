@@ -8,7 +8,7 @@
 
 #include "GameState.hpp"
 
-GameState::GameState(sf::RenderWindow& window, CoreGame* game) : window(&window), coreGame(game)
+GameState::GameState(sf::RenderWindow* window, CoreGame* game) : window(window), coreGame(game)
 {
     
 }

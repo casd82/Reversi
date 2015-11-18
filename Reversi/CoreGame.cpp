@@ -8,10 +8,11 @@
 
 #include "CoreGame.hpp"
 #include "GameState.hpp"
+#include "MenuState.hpp"
 
-CoreGame::CoreGame(sf::RenderWindow& window) : window(&window)
+CoreGame::CoreGame(sf::RenderWindow* window) : window(window)
 {
-    this->currentState = new GameState(window, this);
+    this->currentState = new MenuState(window, this);
 }
 
 void CoreGame::handleInput(sf::Event& event)

@@ -16,7 +16,7 @@ class CoreGame;
 class GameState
 {
 public:
-    GameState(sf::RenderWindow& window, CoreGame* game);
+    GameState(sf::RenderWindow* window, CoreGame* game);
     virtual void handleInput(sf::Event& event){};
     virtual void update(){};
     virtual void render(){};

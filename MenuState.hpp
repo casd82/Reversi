@@ -11,11 +11,12 @@
 
 #include <SFML/Graphics.hpp>
 #include "GameState.hpp"
+#include "Button.hpp"
 
 class MenuState : public GameState
 {
 public:
-    MenuState(sf::RenderWindow& window, CoreGame* coreGame);
+    MenuState(sf::RenderWindow* window, CoreGame* coreGame);
     virtual void handleInput(sf::Event& event);
     virtual void update();
     virtual void render();
@@ -23,6 +24,7 @@ public:
 private:
     sf::Text* text;
     sf::Font* font;
+    Button* startBtn;
 };
 
 #endif /* MenuState_hpp */

@@ -10,8 +10,10 @@
 #include "MenuState.hpp"
 #include "GameState.hpp"
 #include "ResourcePath.hpp"
+#include <iostream>
+#include "Button.hpp"
 
-MenuState::MenuState(sf::RenderWindow& window, CoreGame* game) : GameState(window, game)
+MenuState::MenuState(sf::RenderWindow* window, CoreGame* game) : GameState(window, game)
 {
     //setting text and font
     this->font = new sf::Font();
@@ -19,18 +21,25 @@ MenuState::MenuState(sf::RenderWindow& window, CoreGame* game) : GameState(windo
     this->text = new sf::Text();
     this->text->setFont(*this->font);
     this->text->setString("Reversi");
+    this->text->setColor(sf::Color::Black);
     this->text->setCharacterSize(64u);
+    
     //set origin to the middle
     this->text->setOrigin(this->text->getGlobalBounds().width / 2., this->text->getGlobalBounds().height / 2.);
+    
     //set position to horizontally middle and vertically quarter
-    this->text->setPosition(window.getSize().x / 2., window.getSize().y / 4.);
+    this->text->setPosition(window->getSize().x / 2., window->getSize().y / 4.);
     
     //button
+    this->startBtn = new Button();
+    this->startBtn->setString("Start");
+    this->startBtn->setAction([]{std::cout << "pressed";});      //passing in the action
+    this->startBtn->setPosition(window->getSize().x / 2., window->getSize().y * .6);
 }
 
 void MenuState::handleInput(sf::Event& event)
 {
-    
+    this->startBtn->handleInput(event);
 }
 
 void MenuState::update()
@@ -44,10 +53,12 @@ void MenuState::render()
     this->getWindow()->draw(*this->text);
     
     //draw button
+    this->getWindow()->draw(*this->startBtn);
 }
 
 MenuState::~MenuState()
 {
     delete this->text;
     delete this->font;
+    delete this->startBtn;
 }

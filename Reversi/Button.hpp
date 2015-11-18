@@ -20,17 +20,25 @@ public:
     
     //setters
     void setString(const std::string& str);
+    void setAction(std::function<void(void)> action);
+    void setPosition(const float x, const float y);
     
 private:
     //override
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     
-    void update();
+    void updatePosition();
+    
+    void pressed();
+    void hoverOver();
+    void reset();
     
     //fields
     sf::Text* text;
     sf::Font* font;
     sf::RectangleShape* shape;
+    std::function<void(void)> action;
+    sf::Vector2f position;
 };
 
 #endif /* Button_hpp */
