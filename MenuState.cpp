@@ -10,6 +10,8 @@
 #include "MenuState.hpp"
 #include "GameState.hpp"
 #include "ResourcePath.hpp"
+#include "PlayingState.hpp"
+#include "CoreGame.hpp"
 #include <iostream>
 #include "Button.hpp"
 
@@ -33,7 +35,7 @@ MenuState::MenuState(sf::RenderWindow* window, CoreGame* game) : GameState(windo
     //button
     this->startBtn = new Button();
     this->startBtn->setString("Start");
-    this->startBtn->setAction([]{std::cout << "pressed";});      //passing in the action
+    this->startBtn->setAction([window, game]{game->changeState(new PlayingState(window, game));});
     this->startBtn->setPosition(window->getSize().x / 2., window->getSize().y * .6);
 }
 

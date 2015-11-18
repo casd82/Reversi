@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D922E27A1BFCE4E400758703 /* PlayingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D922E2781BFCE4E400758703 /* PlayingState.cpp */; };
 		D942A6E81BFB333200CCBBA9 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D942A6E61BFB333200CCBBA9 /* Button.cpp */; };
 		D94A7C551BF9C96B00F4615C /* GameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D94A7C531BF9C96B00F4615C /* GameState.cpp */; };
 		D94A7C5A1BF9CAE200F4615C /* CoreGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D94A7C581BF9CAE200F4615C /* CoreGame.cpp */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D922E2781BFCE4E400758703 /* PlayingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayingState.cpp; sourceTree = "<group>"; };
+		D922E2791BFCE4E400758703 /* PlayingState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayingState.hpp; sourceTree = "<group>"; };
 		D942A6E61BFB333200CCBBA9 /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
 		D942A6E71BFB333200CCBBA9 /* Button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Button.hpp; sourceTree = "<group>"; };
 		D94A7C531BF9C96B00F4615C /* GameState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameState.cpp; path = Reversi/GameState.cpp; sourceTree = "<group>"; };
@@ -60,6 +63,8 @@
 				D94A7C541BF9C96B00F4615C /* GameState.hpp */,
 				D9A26A2B1BFA1066006ADA2F /* MenuState.cpp */,
 				D9A26A2C1BFA1066006ADA2F /* MenuState.hpp */,
+				D922E2781BFCE4E400758703 /* PlayingState.cpp */,
+				D922E2791BFCE4E400758703 /* PlayingState.hpp */,
 			);
 			name = GameStates;
 			path = ..;
@@ -208,6 +213,7 @@
 				D94A7C5A1BF9CAE200F4615C /* CoreGame.cpp in Sources */,
 				D9B77C8F1BF9C6EB00F6F3B6 /* main.cpp in Sources */,
 				D94A7C551BF9C96B00F4615C /* GameState.cpp in Sources */,
+				D922E27A1BFCE4E400758703 /* PlayingState.cpp in Sources */,
 				D9A26A2D1BFA1066006ADA2F /* MenuState.cpp in Sources */,
 				D9B77C8C1BF9C6EB00F6F3B6 /* ResourcePath.mm in Sources */,
 				D942A6E81BFB333200CCBBA9 /* Button.cpp in Sources */,
