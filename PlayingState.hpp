@@ -10,6 +10,7 @@
 #define PlayingState_hpp
 
 #include "GameState.hpp"
+#include "Board.hpp"
 
 class PlayingState : public GameState
 {
@@ -21,7 +22,7 @@ public:
     ~PlayingState();
     
 private:
-    
+    Board* board;
 };
 
 #endif /* PlayingState_hpp */

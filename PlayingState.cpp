@@ -10,7 +10,7 @@
 
 PlayingState::PlayingState(sf::RenderWindow* window, CoreGame* coreGame) : GameState(window, coreGame)
 {
-    
+    this->board = new Board();
 }
 
 void PlayingState::handleInput(sf::Event& event)
@@ -25,10 +25,10 @@ void PlayingState::update()
 
 void PlayingState::render()
 {
-    
+    this->getWindow()->draw(*this->board);
 }
 
 PlayingState::~PlayingState()
 {
-    
+    delete this->board;
 }

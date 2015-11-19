@@ -12,8 +12,8 @@
 //override (implement Drawable)
 void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    target.draw(*this->shape);
-    target.draw(*this->text);
+    target.draw(*this->shape, states);
+    target.draw(*this->text, states);
 }
 
 Button::Button()
