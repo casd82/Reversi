@@ -15,7 +15,7 @@ class Chess : public sf::Drawable
 public:
     typedef enum {BLACK, WHITE} ChessColor;
     
-    Chess();
+    Chess(ChessColor c, int i, int j);
     void flipSide();
     ~Chess();
 private:

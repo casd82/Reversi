@@ -10,6 +10,7 @@
 #define Board_hpp
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <map>
 #include "Chess.hpp"
 
 class Board : public sf::Drawable
@@ -17,7 +18,10 @@ class Board : public sf::Drawable
 public:
     static const int SIZE = 8;
     
+    //Loop of Board
     Board();
+    void recordPossibleMoves();
+    void clickBoard(float mouseX, float mouseY);
     ~Board();
 private:
     //override
@@ -29,7 +33,15 @@ private:
         Chess* chess;
         int side;
         sf::RectangleShape gridRect;
+        
+        //records possible moves of this slot.  Map: {(x,y) directions -> length}
+        std::map<std::pair<int, int>, int> moves;
     };
+    
+    void checkPossibleMove(int i, int j, std::pair<int, int> dir);
+    
+    //records current turn
+    Chess::ChessColor turn;
     
     //board in 2d vector
     std::vector<std::vector<Slot>> matrix;
