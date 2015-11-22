@@ -90,6 +90,29 @@ void Board::checkPossibleMove(int i, int j, std::pair<int, int> dir)
         this->matrix[i][j].moves[dir] = moves;
 }
 
+void Board::hoverBoard(float mouseX, float mouseY)
+{
+    //delete the previous hover chess
+    if (hoverChessLocation != std::make_pair<int, int>(-1, -1))
+    {
+        delete this->matrix[hoverChessLocation.first][hoverChessLocation.second].chess;
+        this->matrix[hoverChessLocation.first][hoverChessLocation.second].chess = nullptr;
+    }
+    
+    for (int i = 0; i < SIZE; ++i)
+    {
+        for (int j = 0; j < SIZE; ++j)
+        {
+            //in the block, not occupied, and have moves
+            if (this->matrix[i][j].gridRect.getGlobalBounds().contains(mouseX, mouseY) && this->matrix[i][j].chess == nullptr && !this->matrix[i][j].moves.empty())
+            {
+                this->matrix[i][j].chess = new Chess(this->turn, i, j, true);
+                hoverChessLocation = std::make_pair(i, j);
+            }
+        }
+    }
+}
+
 void Board::clickBoard(float mouseX, float mouseY)
 {
     for (int i = 0; i < SIZE; ++i)
@@ -99,6 +122,7 @@ void Board::clickBoard(float mouseX, float mouseY)
             //check which block is clicked and whether it has possible moves
             if (this->matrix[i][j].gridRect.getGlobalBounds().contains(mouseX, mouseY) && !this->matrix[i][j].moves.empty())
             {
+                
                 //flip chesses and next turn
                 
             }

@@ -22,6 +22,7 @@ public:
     Board();
     void recordPossibleMoves();
     void clickBoard(float mouseX, float mouseY);
+    void hoverBoard(float mouseX, float mouseY);
     ~Board();
 private:
     //override
@@ -42,6 +43,9 @@ private:
     
     //records current turn
     Chess::ChessColor turn;
+    
+    //hover chess
+    std::pair<int, int> hoverChessLocation {-1, -1};
     
     //board in 2d vector
     std::vector<std::vector<Slot>> matrix;

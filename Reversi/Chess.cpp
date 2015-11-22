@@ -9,7 +9,7 @@
 #include "Chess.hpp"
 #include <iostream>
 
-Chess::Chess(ChessColor c, int i, int j) : chessColor(c)
+Chess::Chess(ChessColor c, int i, int j, bool alpha) : chessColor(c)
 {
     //set shape
     this->shape = new sf::CircleShape();
@@ -17,8 +17,14 @@ Chess::Chess(ChessColor c, int i, int j) : chessColor(c)
     this->shape->setPosition(34. + 64. * j, 34. + 64. * i);
     this->shape->setOutlineThickness(2);
     this->shape->setOrigin(this->shape->getGlobalBounds().width / 2., this->shape->getGlobalBounds().height / 2.);
-    this->shape->setOutlineColor(sf::Color::Black);
-    this->shape->setFillColor((this->chessColor == BLACK) ? (sf::Color::Black) : (sf::Color::White));
+    
+    //color
+    sf::Color color = (this->chessColor == BLACK) ? (sf::Color::Black) : (sf::Color::White);
+    if (alpha) color.a = 125;
+    sf::Color alphaBlack = sf::Color::Black;
+    alphaBlack.a = 125;
+    this->shape->setOutlineColor(alpha ? alphaBlack : (sf::Color::Black));
+    this->shape->setFillColor(color);
 }
 
 void Chess::draw(sf::RenderTarget& target, sf::RenderStates states) const

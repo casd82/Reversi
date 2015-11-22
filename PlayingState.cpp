@@ -15,7 +15,15 @@ PlayingState::PlayingState(sf::RenderWindow* window, CoreGame* coreGame) : GameS
 
 void PlayingState::handleInput(sf::Event& event)
 {
+    if (event.type == sf::Event::MouseMoved)
+    {
+        this->board->hoverBoard(event.mouseMove.x, event.mouseMove.y);
+    }
     
+    if (event.type == sf::Event::MouseButtonPressed)
+    {
+        this->board->clickBoard(event.mouseButton.x, event.mouseButton.y);
+    }
 }
 
 void PlayingState::update()
