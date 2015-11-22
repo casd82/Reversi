@@ -7,6 +7,7 @@
 //
 
 #include "Board.hpp"
+#include <iostream>
 
 Board::Board()
 {
@@ -38,6 +39,8 @@ Board::Board()
     
     //black starts first
     turn = Chess::BLACK;
+    
+    recordPossibleMoves();
 }
 
 void Board::recordPossibleMoves()
@@ -50,6 +53,10 @@ void Board::recordPossibleMoves()
             std::vector<std::pair<int, int>> directions{{-1, -1}, {-1, 0}, {-1, 1},
                                                         {0 , -1}, /* ^^ */ {0 , 1},
                                                         {1 , -1}, {1 , 0}, {1 , 1}};
+            
+            //clear the possible moves recorded last turn
+            this->matrix[i][j].moves.clear();
+            
             for (auto dir : directions)
                 this->checkPossibleMove(i, j, dir);
         }
@@ -58,13 +65,29 @@ void Board::recordPossibleMoves()
 
 void Board::checkPossibleMove(int i, int j, std::pair<int, int> dir)
 {
-    //clear the possible moves last turn
-    this->matrix[i][j].moves.clear();
-    
     //occupied
-    if (this->matrix[i][j].chess) return;
+    if (this->matrix[i][j].chess != nullptr) return;
     
-    //.............to be completed............//
+    int moves = -1, i0 = i, j0 = j;
+    
+    do {
+        //next slot
+        i0 += dir.first;
+        j0 += dir.second;
+        
+        //out of bounds
+        if (i0 >= SIZE || j0 >= SIZE || i0 < 0 || j0 < 0) return;
+        
+        //empty
+        if (this->matrix[i0][j0].chess == nullptr) return;
+        
+        ++moves;
+        
+    } while (this->matrix[i0][j0].chess->getColor() != this->turn);
+    
+    //set move to the map
+    if (moves > 0)
+        this->matrix[i][j].moves[dir] = moves;
 }
 
 void Board::clickBoard(float mouseX, float mouseY)

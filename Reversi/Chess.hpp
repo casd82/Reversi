@@ -17,6 +17,7 @@ public:
     
     Chess(ChessColor c, int i, int j);
     void flipSide();
+    ChessColor getColor() {return this->chessColor;};
     ~Chess();
 private:
     //override
