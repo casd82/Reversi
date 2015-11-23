@@ -27,6 +27,13 @@ Chess::Chess(ChessColor c, int i, int j, bool alpha) : chessColor(c)
     this->shape->setFillColor(color);
 }
 
+void Chess::flipSide()
+{
+    this->chessColor == BLACK ? this->chessColor = WHITE : this->chessColor = BLACK;
+    
+    this->shape->setFillColor(this->chessColor == BLACK ? sf::Color::Black : sf::Color::White);
+}
+
 void Chess::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     target.draw(*this->shape, states);

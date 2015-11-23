@@ -39,13 +39,15 @@ private:
         std::map<std::pair<int, int>, int> moves;
     };
     
+    void nextTurn();
+    
     void checkPossibleMove(int i, int j, std::pair<int, int> dir);
     
     //records current turn
     Chess::ChessColor turn;
     
     //hover chess
-    std::pair<int, int> hoverChessLocation {-1, -1};
+    Chess* hoverChess;
     
     //board in 2d vector
     std::vector<std::vector<Slot>> matrix;

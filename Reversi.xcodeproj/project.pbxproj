@@ -53,13 +53,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D942A6E51BFB331900CCBBA9 /* Button */ = {
+		D942A6E51BFB331900CCBBA9 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
 				D942A6E61BFB333200CCBBA9 /* Button.cpp */,
 				D942A6E71BFB333200CCBBA9 /* Button.hpp */,
 			);
-			name = Button;
+			name = GUI;
 			sourceTree = "<group>";
 		};
 		D94A7C561BF9C97300F4615C /* GameStates */ = {
@@ -110,7 +110,7 @@
 				D9B77C8E1BF9C6EB00F6F3B6 /* main.cpp */,
 				D94A7C581BF9CAE200F4615C /* CoreGame.cpp */,
 				D94A7C591BF9CAE200F4615C /* CoreGame.hpp */,
-				D942A6E51BFB331900CCBBA9 /* Button */,
+				D942A6E51BFB331900CCBBA9 /* GUI */,
 				D9B77C901BF9C6EB00F6F3B6 /* Resources */,
 				D9B77C891BF9C6EB00F6F3B6 /* Supporting Files */,
 			);

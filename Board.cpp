@@ -93,10 +93,10 @@ void Board::checkPossibleMove(int i, int j, std::pair<int, int> dir)
 void Board::hoverBoard(float mouseX, float mouseY)
 {
     //delete the previous hover chess
-    if (hoverChessLocation != std::make_pair<int, int>(-1, -1))
+    if (this->hoverChess != nullptr)
     {
-        delete this->matrix[hoverChessLocation.first][hoverChessLocation.second].chess;
-        this->matrix[hoverChessLocation.first][hoverChessLocation.second].chess = nullptr;
+        delete this->hoverChess;
+        this->hoverChess = nullptr;
     }
     
     for (int i = 0; i < SIZE; ++i)
@@ -106,8 +106,7 @@ void Board::hoverBoard(float mouseX, float mouseY)
             //in the block, not occupied, and have moves
             if (this->matrix[i][j].gridRect.getGlobalBounds().contains(mouseX, mouseY) && this->matrix[i][j].chess == nullptr && !this->matrix[i][j].moves.empty())
             {
-                this->matrix[i][j].chess = new Chess(this->turn, i, j, true);
-                hoverChessLocation = std::make_pair(i, j);
+                this->hoverChess = new Chess(this->turn, i, j, true);
             }
         }
     }
@@ -122,12 +121,42 @@ void Board::clickBoard(float mouseX, float mouseY)
             //check which block is clicked and whether it has possible moves
             if (this->matrix[i][j].gridRect.getGlobalBounds().contains(mouseX, mouseY) && !this->matrix[i][j].moves.empty())
             {
+                //delete the hover chess
+                
+                //place chess where the player clicks
+                this->matrix[i][j].chess = new Chess(this->turn, i, j);
                 
                 //flip chesses and next turn
+                for (auto iter = matrix[i][j].moves.cbegin(); iter != matrix[i][j].moves.cend(); ++iter)
+                {
+                    int i0 = i, j0 = j;
+                    
+                    //flip
+                    for (int n = 0; n < iter->second; ++n)
+                    {
+                        i0 += iter->first.first;
+                        j0 += iter->first.second;
+                        
+                        this->matrix[i0][j0].chess->flipSide();
+                    }
+                }
                 
+                nextTurn();
             }
         }
     }
+}
+
+void Board::nextTurn()
+{
+    if (this->turn == Chess::BLACK)
+        this->turn = Chess::WHITE;
+    else
+        this->turn = Chess::BLACK;
+    
+    recordPossibleMoves();
+    
+    //if no more moves...
 }
 
 //override
@@ -147,6 +176,8 @@ void Board::draw(sf::RenderTarget& target, sf::RenderStates states) const
                 target.draw(*(s.chess), states);
         }
     }
+    
+    if (hoverChess != nullptr) target.draw(*hoverChess, states);
 }
 
 Board::~Board()
