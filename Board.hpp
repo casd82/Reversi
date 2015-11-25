@@ -24,6 +24,9 @@ public:
     void clickBoard(float mouseX, float mouseY);
     void hoverBoard(float mouseX, float mouseY);
     ~Board();
+    
+    //getters
+    Chess::ChessColor getTurn() const {return this->turn;};
 private:
     //override
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

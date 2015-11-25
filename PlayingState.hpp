@@ -11,6 +11,7 @@
 
 #include "GameState.hpp"
 #include "Board.hpp"
+#include "Chess.hpp"
 
 class PlayingState : public GameState
 {
@@ -23,6 +24,12 @@ public:
     
 private:
     Board* board;
+    Chess* turnIndicatingChess;
+    sf::Text* turnIndicatingText;
+    sf::Font* font;
+    
+    std::string turnString() const;
+    void updateTurnIndicator();
 };
 
 #endif /* PlayingState_hpp */

@@ -9,7 +9,7 @@
 #include "Chess.hpp"
 #include <iostream>
 
-Chess::Chess(ChessColor c, int i, int j, bool alpha) : chessColor(c)
+Chess::Chess(ChessColor c, int i, int j, bool alpha, bool indicator) : chessColor(c)
 {
     //set shape
     this->shape = new sf::CircleShape();
@@ -25,6 +25,8 @@ Chess::Chess(ChessColor c, int i, int j, bool alpha) : chessColor(c)
     alphaBlack.a = 125;
     this->shape->setOutlineColor(alpha ? alphaBlack : (sf::Color::Black));
     this->shape->setFillColor(color);
+    
+    if (indicator) this->shape->setPosition(573, 34);
 }
 
 void Chess::flipSide()
