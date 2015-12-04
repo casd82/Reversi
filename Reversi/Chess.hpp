@@ -20,8 +20,7 @@ public:
     ChessColor getColor() {return this->chessColor;};
     ~Chess();
 private:
-    //override
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     
     ChessColor chessColor;
     sf::CircleShape* shape;

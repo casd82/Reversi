@@ -24,8 +24,7 @@ public:
     void setPosition(const float x, const float y);
     
 private:
-    //override
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     
     void updatePosition();
     

@@ -26,10 +26,13 @@ private:
     Board* board;
     Chess* turnIndicatingChess;
     sf::Text* turnIndicatingText;
+    sf::Text* cannotMoveText;
+    sf::Text* scoreText;
     sf::Font* font;
     
     std::string turnString() const;
     void updateTurnIndicator();
+    void updateScore();
 };
 
 #endif /* PlayingState_hpp */

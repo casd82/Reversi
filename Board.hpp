@@ -23,13 +23,15 @@ public:
     void recordPossibleMoves();
     void clickBoard(float mouseX, float mouseY);
     void hoverBoard(float mouseX, float mouseY);
+    bool cannotMove() const {return noPossibleMoves;};
     ~Board();
     
     //getters
     Chess::ChessColor getTurn() const {return this->turn;};
+    int getBlackScore() const {return this->blackScore;};
+    int getWhiteScore() const {return this->whiteScore;};
 private:
-    //override
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     
     //struct of slot
     struct Slot
@@ -44,10 +46,18 @@ private:
     
     void nextTurn();
     
+    void countScore();
+    
     void checkPossibleMove(int i, int j, std::pair<int, int> dir);
     
     //records current turn
     Chess::ChessColor turn;
+    
+    bool noPossibleMoves = false;
+    
+    //score
+    int whiteScore = 2;
+    int blackScore = 2;
     
     //hover chess
     Chess* hoverChess;

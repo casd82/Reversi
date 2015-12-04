@@ -9,7 +9,7 @@
 #include "Board.hpp"
 #include <iostream>
 
-Board::Board()
+Board::Board() : hoverChess(nullptr)
 {
     for (int i = 0; i < SIZE; ++i)
     {
@@ -142,6 +142,7 @@ void Board::clickBoard(float mouseX, float mouseY)
                 }
                 
                 nextTurn();
+                countScore();
             }
         }
     }
@@ -149,6 +150,8 @@ void Board::clickBoard(float mouseX, float mouseY)
 
 void Board::nextTurn()
 {
+    this->noPossibleMoves = false;
+    
     if (this->turn == Chess::BLACK)
         this->turn = Chess::WHITE;
     else
@@ -156,7 +159,45 @@ void Board::nextTurn()
     
     recordPossibleMoves();
     
-    //if no more moves...
+    //no possible moves
+    for (int i = 0; i < SIZE; ++i)
+    {
+        for (int j = 0; j < SIZE; ++j)
+        {
+            if (!this->matrix[i][j].moves.empty()) return;
+        }
+    }
+    
+    if (this->turn == Chess::BLACK)
+        this->turn = Chess::WHITE;
+    else
+        this->turn = Chess::BLACK;
+    
+    this->noPossibleMoves = true;
+}
+
+void Board::countScore()
+{
+    this->blackScore = 0;
+    this->whiteScore = 0;
+    
+    for (auto i : matrix)
+    {
+        for (auto j : i)
+        {
+            if (j.chess != nullptr)
+            {
+                if (j.chess->getColor() == Chess::BLACK)
+                {
+                    ++this->blackScore;
+                }
+                else
+                {
+                    ++this->whiteScore;
+                }
+            }
+        }
+    }
 }
 
 //override

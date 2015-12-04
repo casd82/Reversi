@@ -22,6 +22,18 @@ PlayingState::PlayingState(sf::RenderWindow* window, CoreGame* coreGame) : GameS
     this->turnIndicatingText->setColor(sf::Color::Black);
     this->turnIndicatingText->setPosition(520, 60);
     
+    this->scoreText = new sf::Text();
+    this->scoreText->setFont(*this->font);
+    this->scoreText->setCharacterSize(20u);
+    this->scoreText->setColor(sf::Color::Black);
+    this->scoreText->setPosition(535, 240);
+    
+    this->cannotMoveText = new sf::Text();
+    this->cannotMoveText->setFont(*this->font);
+    this->cannotMoveText->setCharacterSize(20u);
+    this->cannotMoveText->setColor(sf::Color::Black);
+    this->cannotMoveText->setPosition(535, 150);
+    
     //set turn indicator
     this->turnIndicatingChess = new Chess(this->board->getTurn(), 0, 0, false, true);
     this->turnIndicatingText->setString(turnString());
@@ -37,10 +49,23 @@ std::string PlayingState::turnString() const
 
 void PlayingState::updateTurnIndicator()
 {
+    //turn indicating text
     if (this->board->getTurn() != this->turnIndicatingChess->getColor())
     {
         this->turnIndicatingChess->flipSide();
         this->turnIndicatingText->setString(turnString());
+    }
+    
+    //cannot move text
+    if (this->board->cannotMove())
+    {
+        std::string str = this->board->getTurn() == Chess::BLACK ? " White\n" : " Black\n";
+        str.append("cannot\n move!");
+        this->cannotMoveText->setString(str);
+    }
+    else
+    {
+        this->cannotMoveText->setString("");
     }
 }
 
@@ -57,9 +82,19 @@ void PlayingState::handleInput(sf::Event& event)
     }
 }
 
+void PlayingState::updateScore()
+{
+    std::string str= "Score:\nBlack: ";
+    str.append(std::to_string(this->board->getBlackScore()));
+    str.append("\nWhite: ");
+    str.append(std::to_string(this->board->getWhiteScore()));
+    this->scoreText->setString(str);
+}
+
 void PlayingState::update()
 {
     this->updateTurnIndicator();
+    this->updateScore();
 }
 
 void PlayingState::render()
@@ -67,6 +102,8 @@ void PlayingState::render()
     this->getWindow()->draw(*this->board);
     this->getWindow()->draw(*this->turnIndicatingChess);
     this->getWindow()->draw(*this->turnIndicatingText);
+    this->getWindow()->draw(*this->cannotMoveText);
+    this->getWindow()->draw(*this->scoreText);
 }
 
 PlayingState::~PlayingState()
