@@ -12,6 +12,7 @@
 #include "GameState.hpp"
 #include "Board.hpp"
 #include "Chess.hpp"
+#include "Button.hpp"
 
 class PlayingState : public GameState
 {
@@ -25,13 +26,18 @@ public:
 private:
     Board* board;
     Chess* turnIndicatingChess;
+    Button* restartButton;
+    Button* exitButton;
     sf::Text* turnIndicatingText;
     sf::Text* cannotMoveText;
     sf::Text* scoreText;
+    sf::Text* winText;
     sf::Font* font;
+    bool win = false;
     
     std::string turnString() const;
     void updateTurnIndicator();
+    void checkWin();
     void updateScore();
 };
 
