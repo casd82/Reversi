@@ -30,6 +30,7 @@ public:
     Chess::ChessColor getTurn() const {return this->turn;};
     int getBlackScore() const {return this->blackScore;};
     int getWhiteScore() const {return this->whiteScore;};
+    bool getNoPossibleMovesForBoth() const {return this->noPossibleMovesForBoth;};
 private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     
@@ -54,6 +55,7 @@ private:
     Chess::ChessColor turn;
     
     bool noPossibleMoves = false;
+    bool noPossibleMovesForBoth = false;
     
     //score
     int whiteScore = 2;

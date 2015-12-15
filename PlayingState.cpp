@@ -127,7 +127,7 @@ void PlayingState::checkWin()
     int blackScore = this->board->getBlackScore();
     int whiteScore = this->board->getWhiteScore();
     
-    if ((blackScore + whiteScore == Board::SIZE * Board::SIZE) /* || No Possible Moves for Both Sides */)
+    if ((blackScore + whiteScore == Board::SIZE * Board::SIZE) || (this->board->getNoPossibleMovesForBoth()))
     {
         this->win = true;
         

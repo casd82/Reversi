@@ -150,7 +150,6 @@ void Board::clickBoard(float mouseX, float mouseY)
 
 void Board::nextTurn()
 {
-    this->noPossibleMoves = false;
     
     if (this->turn == Chess::BLACK)
         this->turn = Chess::WHITE;
@@ -164,7 +163,11 @@ void Board::nextTurn()
     {
         for (int j = 0; j < SIZE; ++j)
         {
-            if (!this->matrix[i][j].moves.empty()) return;
+            if (!this->matrix[i][j].moves.empty())
+            {
+                this->noPossibleMoves = false;
+                return;
+            }
         }
     }
     
@@ -172,6 +175,13 @@ void Board::nextTurn()
         this->turn = Chess::WHITE;
     else
         this->turn = Chess::BLACK;
+    
+    recordPossibleMoves();
+    
+    if (this->noPossibleMoves)
+    {
+        this->noPossibleMovesForBoth = true;
+    }
     
     this->noPossibleMoves = true;
 }
